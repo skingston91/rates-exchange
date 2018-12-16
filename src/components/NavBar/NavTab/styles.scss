@@ -1,0 +1,11 @@
+.NavTab {
+  color: grey;
+  text-decoration: none;
+  padding: 1rem 0;
+  border-bottom: 0.1rem solid lighten(grey, 25%);
+}
+
+.NavTab--selected {
+  color: black;
+  border-bottom: 0.1rem solid black;
+}

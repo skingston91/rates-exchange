@@ -1,3 +1,15 @@
 .App {
   text-align: center;
 }
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Header__icon {
+}
+
+.Header__text {
+  /* flex: 0 1 auto; */
+}
