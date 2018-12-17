@@ -3,6 +3,7 @@ import React from "react";
 import IconGroup from "../../components/IconGroup";
 import SubItem from "../../components/SubItem";
 import MiniLineGraph from "../../components/MiniLineGraph";
+import Toggle from "../../components/Toggle";
 
 import { ReactComponent as Plus } from "../../assets/icons/plus-circle.svg";
 
@@ -27,7 +28,7 @@ const Alerts = () => {
       <div className="Alerts__Set">
         <SubItem headerText="GBP" subHeaderText="British Pound" />
         <MiniLineGraph data={[5, 10, 5, 20, 8, 15]} />
-        <SubItem headerText="GBP" subHeaderText="British Pound" />
+        <Toggle />
       </div>
     </div>
   );
