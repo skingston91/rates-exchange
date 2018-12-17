@@ -4,7 +4,7 @@ import Icon from "../Icon";
 
 import "./styles.scss";
 
-const IconGroup = ({ handleClick, icon, text }) => (
+const IconGroup = ({ handleClick, icon, text, color = "black" }) => (
   <div className="Rates">
     <div
       className="IconGroup"
@@ -15,7 +15,7 @@ const IconGroup = ({ handleClick, icon, text }) => (
       <div className="IconGroup__Icon">
         <Icon {...icon} />
       </div>
-      <h3> {text}</h3>
+      <h3 className={`IconGroup__text IconGroup__text--${color}`}> {text}</h3>
     </div>
   </div>
 );

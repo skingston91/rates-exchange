@@ -24,6 +24,7 @@ const Alerts = () => {
         handleClick={() => {
           console.log("Icon Group");
         }}
+        color="blue"
       />
       <div className="Alerts__Set">
         <SubItem headerText="GBP" subHeaderText="British Pound" />

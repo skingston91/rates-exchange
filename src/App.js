@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import SharedRates from "./routes/SharedRates";
+import Exchange from "./routes/Exchange";
 
-import "./App.css";
+import "./App.scss";
 
 class App extends Component {
   render() {
@@ -11,9 +12,8 @@ class App extends Component {
       <Router>
         <div className="App">
           <div className="Route">
-            <Route path="/" component={SharedRates} />
+            <Route exact path="/" component={Exchange} />
             <Route path="/rates" component={SharedRates} />
-            <Route render={() => <Redirect to={"/"} />} />
           </div>
         </div>
       </Router>

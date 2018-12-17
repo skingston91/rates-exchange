@@ -1,0 +1,41 @@
+.ExchangeCurrency {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem 0;
+}
+
+.ExchangeCurrency--grey {
+  background-color: --grey;
+}
+
+.ExchangeCurrency__data {
+  display: flex;
+  flex-direction: column;
+}
+
+.ExchangeCurrency__header {
+  display: flex;
+  align-items: center;
+}
+
+.ExchangeCurrency__header--text {
+  font-size: 1.8rem;
+  margin: 0;
+  padding: 0 0.2rem 1rem 0;
+}
+
+.ExchangeCurrency__header--icon {
+}
+
+.ExchangeCurrency__input {
+  text-align: right;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: grey;
+}
+
+.ExchangeCurrency__sub_text {
+  color: grey;
+}

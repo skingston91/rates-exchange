@@ -24,6 +24,7 @@ const Converter = () => {
         handleClick={() => {
           console.log("Icon Group");
         }}
+        color="blue"
       />
       <div className="Converter__Set">
         <div className="Converter__flag">

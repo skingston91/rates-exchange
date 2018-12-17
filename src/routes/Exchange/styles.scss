@@ -1,0 +1,57 @@
+.Exchange {
+}
+
+.Exchange__center_wrapper {
+}
+
+.Exchange__center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 20px;
+}
+
+.Exchange__switch {
+  background: white;
+  position: absolute;
+  left: 1rem;
+  border: 1px solid var(--grey);
+  border-radius: 2rem;
+}
+
+.Exchange__rate {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 2rem;
+  border: 1px solid #eceaea;
+  padding: 0 1rem;
+}
+
+.Exchange__rate--text {
+  padding-left: 0.5rem;
+  color: var(--blue);
+  font-size: 0.7rem;
+}
+
+.Exchange__button {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border-radius: 2rem;
+  padding: 1rem;
+  background-color: pink;
+  margin: 1rem;
+  box-shadow: 0 4px 2px -2px #eceaea;
+  input {
+    color: white;
+    font-weight: bold;
+  }
+}
+
+.Exchange__bottom {
+  background-color: var(--grey);
+  border-top: 1px solid var(--grey);
+  padding-bottom: 1rem;
+}

@@ -23,6 +23,7 @@ const Rates = () => {
         handleClick={() => {
           console.log("Icon Group");
         }}
+        color="blue"
       />
       <div className="Rates__Set">
         <SubItem headerText="1 GBP" subHeaderText="British Pound" />

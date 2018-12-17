@@ -1,21 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import Icon from "../Icon";
+
 import "./styles.scss";
 
-const Header = ({ headerText, leftIcon, rightIcon, leftLink, rightLink }) => (
+const Header = ({
+  headerText,
+  leftIconProps,
+  rightIconProps,
+  leftLink,
+  rightLink
+}) => (
   <div className="Header">
-    {leftIcon && (
-      <Link to={leftLink}>
-        <img className="Header__leftIcon" src={leftIcon} alt="back" />
+    {leftIconProps && (
+      <Link to={leftLink} className="Header__leftIcon">
+        <Icon {...leftIconProps} />
       </Link>
     )}
-    <p className="Header__text"> {headerText} </p>
-    {rightIcon && (
-      <Link to={rightLink}>
-        <img className="Header__rightIcon" src={leftIcon} alt="forward" />
+    {rightIconProps && (
+      <Link to={rightLink} className="Header__rightIcon">
+        <Icon {...rightIconProps} />
       </Link>
     )}
+    <h1 className="Header__text"> {headerText} </h1>
   </div>
 );
 
