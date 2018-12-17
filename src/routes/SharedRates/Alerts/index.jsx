@@ -1,11 +1,11 @@
 import React from "react";
 
-import IconGroup from "../../components/IconGroup";
-import SubItem from "../../components/SubItem";
-import MiniLineGraph from "../../components/MiniLineGraph";
-import Toggle from "../../components/Toggle";
+import IconGroup from "../../../components/IconGroup";
+import SubItem from "../../../components/SubItem";
+import MiniLineGraph from "../../../components/MiniLineGraph";
+import Toggle from "../../../components/Toggle";
 
-import { ReactComponent as Plus } from "../../assets/icons/plus-circle.svg";
+import { ReactComponent as Plus } from "../../../assets/icons/plus-circle.svg";
 
 import "./styles.scss";
 

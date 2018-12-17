@@ -3,12 +3,3 @@
 
 .Header {
 }
-
-.Header__icon {
-  position: absolute;
-  left: 1rem;
-}
-
-.Header__text {
-  text-align: center;
-}

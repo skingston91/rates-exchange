@@ -1,11 +1,11 @@
 import React from "react";
 
-import IconGroup from "../../components/IconGroup";
-import SubItem from "../../components/SubItem";
-import LazyLoadedImage from "../../components/LazyLoadedImage";
+import IconGroup from "../../../components/IconGroup";
+import SubItem from "../../../components/SubItem";
+import LazyLoadedImage from "../../../components/LazyLoadedImage";
 
-import { ReactComponent as Plus } from "../../assets/icons/plus-circle.svg";
-import GBflag from "../../assets/flags/4x3/gb.svg";
+import { ReactComponent as Plus } from "../../../assets/icons/plus-circle.svg";
+import GBflag from "../../../assets/flags/4x3/gb.svg";
 
 import "./styles.scss";
 
