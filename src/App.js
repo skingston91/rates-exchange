@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import arrowLeft from "./assets/icons/arrow-left.svg";
 
 import NavBar from "./components/NavBar";
 import Rates from "./routes/Rates";
 import Converter from "./routes/Converter";
-import Alerts from "./routes/Converter";
+import Alerts from "./routes/Alerts";
 
 import "./App.css";
 
@@ -14,7 +14,7 @@ import "./App.css";
 const navElements = [
   {
     text: "Rates",
-    to: "/"
+    to: "/rates"
   },
   {
     text: "Converter",
@@ -38,9 +38,10 @@ class App extends Component {
           </div>
           <NavBar navElements={navElements} />
           <div className="Route">
-            <Route path="/" exact component={Rates} />
-            <Route path="/converter/" component={Converter} />
-            <Route path="/alerts/" component={Alerts} />
+            <Route exact path="/" render={() => <Redirect to={"/rates"} />} />
+            <Route path="/rates" component={Rates} />
+            <Route path="/converter" component={Converter} />
+            <Route path="/alerts" component={Alerts} />
           </div>
         </div>
       </Router>
