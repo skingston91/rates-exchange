@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import Header from "../../components/Header";
 import Icon from "../../components/Icon";
@@ -7,7 +8,8 @@ import ExchangeCurrency from "../../components/ExchangeCurrency";
 import { ReactComponent as Close } from "../../assets/icons/x.svg";
 import { ReactComponent as TrendingUp } from "../../assets/icons/trending-up.svg";
 import { ReactComponent as Switch } from "../../assets/icons/shuffle.svg";
-import { ReactComponent as Down } from "../../assets/icons/chevron-down.svg";
+
+import { fetchData } from "../../redux/actions/index";
 
 import "./styles.scss";
 
@@ -33,7 +35,7 @@ const switchBlueIcon = {
   stroke: "#0167fd"
 };
 
-const Exchange = () => {
+export const Exchange = () => {
   return (
     <div className="Exchange">
       <Header
@@ -63,4 +65,19 @@ const Exchange = () => {
   );
 };
 
-export default Exchange;
+function mapStateToProps(state) {
+  return {
+    currency: state.currency
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchData: object => dispatch(fetchData(object))
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Exchange);
