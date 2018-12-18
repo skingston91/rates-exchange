@@ -67,15 +67,22 @@ class Exchange extends Component {
       currentBalance: 200
     };
   }
-
   componentDidMount() {
-    this.props.fetchCurrencyData(this.state.currentCurrency);
+    this.interval = setInterval(
+      () => this.props.fetchCurrencyData(this.state.currentCurrency),
+      10000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   handleChange = checked => {
     this.setState({ checked });
   };
 
+  // Can't test with this api
   handleSwitch = () => {
     const { currentCurrency, convertTo } = this.state;
     this.setState({ currentCurrency: convertTo, convertTo: currentCurrency });
@@ -85,11 +92,18 @@ class Exchange extends Component {
     const { currencyData } = this.props;
     const { currentCurrency, convertTo } = this.state;
     const currentCurrencyData = currencyData[currentCurrency];
-    if (!currentCurrencyData || currentCurrencyData.loading) {
+    if (!currentCurrencyData) {
       return <p>Loading...</p>;
     }
+
+    if (
+      (currentCurrencyData && currentCurrencyData.error) ||
+      (!currentCurrencyData.result || !currentCurrencyData.result[convertTo])
+    ) {
+      return <p>Error!</p>;
+    }
+
     const currentRate = currentCurrencyData.result[convertTo];
-    console.log(currentCurrencyData, convertTo);
     return (
       <div className="Exchange">
         <Header
@@ -99,7 +113,7 @@ class Exchange extends Component {
           rightIconProps={ratesIcon}
           rightLink={"/rates/rates"}
         />
-        {currentCurrencyData && currentCurrencyData.error && <p>Error!</p>}
+
         {currentCurrencyData && currentCurrencyData.result && (
           <React.Fragment>
             <ExchangeCurrency
@@ -109,7 +123,10 @@ class Exchange extends Component {
               }${userReducer.money[currentCurrency] || 0.0}`}
             />
             <div className="Exchange__center">
-              <button className="Exchange__switch">
+              <button
+                className="Exchange__switch"
+                onClick={() => this.handleSwitch()}
+              >
                 <Icon {...switchBlueIcon} />
               </button>
               <div className="Exchange__rate">

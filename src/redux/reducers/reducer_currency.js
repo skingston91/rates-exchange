@@ -1,15 +1,9 @@
-import {
-  FETCH_CURRENCY_STARTING,
-  FETCH_CURRENCY_DONE,
-  FETCH_CURRENCY_FAILED
-} from "../actions/types";
+import { FETCH_CURRENCY_DONE, FETCH_CURRENCY_FAILED } from "../actions/types";
 
 const INITIAL_STATE = {};
 
 export default function(state = INITIAL_STATE, { type, payload }) {
   switch (type) {
-    case FETCH_CURRENCY_STARTING:
-      return startLoadingData(state, payload);
     case FETCH_CURRENCY_FAILED:
       return failedLoadingData(state, payload);
     case FETCH_CURRENCY_DONE:
@@ -17,13 +11,6 @@ export default function(state = INITIAL_STATE, { type, payload }) {
     default:
       return state;
   }
-}
-
-function startLoadingData(state, { currency }) {
-  return updateResult(state, currency, () => ({
-    loading: true,
-    error: false
-  }));
 }
 
 function failedLoadingData(state, { currency, error }) {

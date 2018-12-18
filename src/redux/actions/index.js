@@ -1,18 +1,10 @@
 // TODO move the api request to a node server to hide our apikey
 import apiKey from "../../data/apiKey";
 
-import {
-  FETCH_CURRENCY_STARTING,
-  FETCH_CURRENCY_DONE,
-  FETCH_CURRENCY_FAILED
-} from "./types";
+import { FETCH_CURRENCY_DONE, FETCH_CURRENCY_FAILED } from "./types";
 
 export function fetchCurrencyData(currency) {
   return dispatch => {
-    dispatch({
-      type: FETCH_CURRENCY_STARTING,
-      payload: { currency }
-    });
     return fetch(
       `https://openexchangerates.org/api/latest.json?app_id=${apiKey}&base=${
         currency ? currency : "USD"
