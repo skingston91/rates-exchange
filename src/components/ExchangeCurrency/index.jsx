@@ -18,8 +18,10 @@ const ExchangeCurrency = ({
   currencyAmount = 0,
   handleCurrencyChange,
   handleCurrencyTypeChange,
-  availableCurrencies
+  availableCurrencies,
+  prefix
 }) => {
+  const currentValue = parseFloat(currencyAmount) || 0;
   return (
     <div className={`ExchangeCurrency ExchangeCurrency--${color}`}>
       <div className="ExchangeCurrency__data">
@@ -39,13 +41,17 @@ const ExchangeCurrency = ({
         </div>
         <div className="ExchangeCurrency__sub_text">{subText}</div>
       </div>
-      <input
-        className="ExchangeCurrency__input"
-        type="number"
-        placeholder="0"
-        value={currencyAmount}
-        onChange={e => handleCurrencyChange(e.target.value)}
-      />
+      <div>
+        {currentValue !== 0 && (
+          <span className="ExchangeCurrency__input--prefix"> {prefix} </span>
+        )}
+        <input
+          className="ExchangeCurrency__input"
+          type="number"
+          value={currentValue}
+          onChange={e => handleCurrencyChange(e.target.value)}
+        />
+      </div>
     </div>
   );
 };

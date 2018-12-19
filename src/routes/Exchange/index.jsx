@@ -63,7 +63,7 @@ class Exchange extends Component {
   constructor() {
     super();
     this.state = {
-      currentCurrency: userReducer.defaultCurrency,
+      convertFrom: userReducer.defaultCurrency,
       convertTo: "GBP",
       currencyFromAmount: 0,
       currencyToAmount: 0
@@ -75,7 +75,7 @@ class Exchange extends Component {
     //   () => this.props.fetchCurrencyData(this.state.currentCurrency),
     //   10000
     // );
-    this.props.fetchCurrencyData(this.state.currentCurrency);
+    this.props.fetchCurrencyData(this.state.convertFrom);
   }
 
   componentWillUnmount() {
@@ -84,28 +84,24 @@ class Exchange extends Component {
 
   // Can't test with this api
   handleSwitch = () => {
-    const { currentCurrency, convertTo } = this.state;
-    this.setState({ currentCurrency: convertTo, convertTo: currentCurrency });
+    const { convertFrom, convertTo } = this.state;
+    this.setState({ currentCurrency: convertTo, convertTo: convertFrom });
   };
 
-  calculateTransaction = (convertValue, convertRate) => {
-    return convertValue / convertRate;
-  };
-
-  calculateFromTransaction = (convertValue, convertRate) => {
-    return convertValue / convertRate;
+  calculateTransaction = (convertValue, convertRate, divide) => {
+    if (divide) return convertValue / convertRate;
+    return convertValue * convertRate;
   };
 
   render() {
     const { currencyData } = this.props;
     const {
-      currentCurrency,
+      convertFrom,
       convertTo,
       currencyFromAmount,
       currencyToAmount
     } = this.state;
-    const currentCurrencyData = currencyData[currentCurrency];
-
+    const currentCurrencyData = currencyData[convertFrom];
     if (!currentCurrencyData) {
       return <p>Loading...</p>;
     }
@@ -127,20 +123,20 @@ class Exchange extends Component {
           rightIconProps={ratesIcon}
           rightLink={"/rates/rates"}
         />
-
         {currentCurrencyData && currentCurrencyData.result && (
           <React.Fragment>
             <ExchangeCurrency
-              currentCurrency={currentCurrency}
+              currentCurrency={convertFrom}
               availableCurrencies={Object.keys(availableCurrencies)}
               subText={`Balance: ${
-                availableCurrencies[currentCurrency].symbol
-              }${userReducer.money[currentCurrency] || 0.0}`}
+                availableCurrencies[convertFrom].symbol
+              }${userReducer.money[convertFrom] || 0.0}`}
               currencyAmount={currencyFromAmount}
               handleCurrencyChange={currencyFromAmount => {
                 const newCurrencyToAmount = this.calculateTransaction(
-                  parseInt(currencyFromAmount, 8),
-                  currentRate
+                  parseFloat(currencyFromAmount),
+                  currentRate,
+                  false
                 );
                 this.setState({
                   currencyFromAmount,
@@ -148,8 +144,9 @@ class Exchange extends Component {
                 });
               }}
               handleCurrencyTypeChange={currency => {
-                this.setState({ currentCurrency: currency });
+                this.setState({ convertFrom: currency });
               }}
+              prefix="-"
             />
             <div className="Exchange__center">
               <button
@@ -161,10 +158,10 @@ class Exchange extends Component {
               <div className="Exchange__rate">
                 <Icon {...ratesBlueIcon} />
                 <h4 className="Exchange__rate--text">{`${
-                  availableCurrencies[currentCurrency].symbol
+                  availableCurrencies[convertFrom].symbol
                 }1 = ${
                   availableCurrencies[convertTo].symbol
-                }${currentRate}`}</h4>
+                }${Number.parseFloat(currentRate).toFixed(4)}`}</h4>
               </div>
             </div>
             <div className="Exchange__bottom">
@@ -177,8 +174,9 @@ class Exchange extends Component {
                 currencyAmount={currencyToAmount}
                 handleCurrencyChange={currencyToAmount => {
                   const newCurrentCurrencyAmount = this.calculateTransaction(
-                    parseInt(currencyToAmount, 8),
-                    currentCurrencyData.result[currentCurrency]
+                    parseFloat(currencyToAmount),
+                    currentCurrencyData.result[convertTo],
+                    true
                   );
                   this.setState({
                     currencyFromAmount: newCurrentCurrencyAmount,
@@ -188,6 +186,7 @@ class Exchange extends Component {
                 handleCurrencyTypeChange={currency => {
                   this.setState({ convertTo: currency });
                 }}
+                prefix="+"
               />
               <div className="Exchange__button">
                 <input type="button" value="Exchange" />
