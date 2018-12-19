@@ -51,3 +51,7 @@ h5 {
 p {
   font-size: 10px;
 }
+
+select:focus {
+  outline: none;
+}

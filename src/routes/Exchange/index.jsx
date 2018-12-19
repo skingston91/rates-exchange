@@ -47,6 +47,7 @@ const availableCurrencies = {
     symbol: "€"
   }
 };
+
 const userReducer = {
   defaultCurrency: "USD",
   money: {
@@ -64,23 +65,22 @@ class Exchange extends Component {
     this.state = {
       currentCurrency: userReducer.defaultCurrency,
       convertTo: "GBP",
-      currentBalance: 200
+      currencyFromAmount: 0,
+      currencyToAmount: 0
     };
   }
   componentDidMount() {
-    this.interval = setInterval(
-      () => this.props.fetchCurrencyData(this.state.currentCurrency),
-      10000
-    );
+    // commented out as hitting data limit
+    // this.interval = setInterval(
+    //   () => this.props.fetchCurrencyData(this.state.currentCurrency),
+    //   10000
+    // );
+    this.props.fetchCurrencyData(this.state.currentCurrency);
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
   }
-
-  handleChange = checked => {
-    this.setState({ checked });
-  };
 
   // Can't test with this api
   handleSwitch = () => {
@@ -88,10 +88,24 @@ class Exchange extends Component {
     this.setState({ currentCurrency: convertTo, convertTo: currentCurrency });
   };
 
+  calculateTransaction = (convertValue, convertRate) => {
+    return convertValue / convertRate;
+  };
+
+  calculateFromTransaction = (convertValue, convertRate) => {
+    return convertValue / convertRate;
+  };
+
   render() {
     const { currencyData } = this.props;
-    const { currentCurrency, convertTo } = this.state;
+    const {
+      currentCurrency,
+      convertTo,
+      currencyFromAmount,
+      currencyToAmount
+    } = this.state;
     const currentCurrencyData = currencyData[currentCurrency];
+
     if (!currentCurrencyData) {
       return <p>Loading...</p>;
     }
@@ -117,10 +131,25 @@ class Exchange extends Component {
         {currentCurrencyData && currentCurrencyData.result && (
           <React.Fragment>
             <ExchangeCurrency
-              header={currentCurrency}
+              currentCurrency={currentCurrency}
+              availableCurrencies={Object.keys(availableCurrencies)}
               subText={`Balance: ${
                 availableCurrencies[currentCurrency].symbol
               }${userReducer.money[currentCurrency] || 0.0}`}
+              currencyAmount={currencyFromAmount}
+              handleCurrencyChange={currencyFromAmount => {
+                const newCurrencyToAmount = this.calculateTransaction(
+                  parseInt(currencyFromAmount, 8),
+                  currentRate
+                );
+                this.setState({
+                  currencyFromAmount,
+                  currencyToAmount: newCurrencyToAmount
+                });
+              }}
+              handleCurrencyTypeChange={currency => {
+                this.setState({ currentCurrency: currency });
+              }}
             />
             <div className="Exchange__center">
               <button
@@ -140,10 +169,25 @@ class Exchange extends Component {
             </div>
             <div className="Exchange__bottom">
               <ExchangeCurrency
-                header={convertTo}
+                currentCurrency={convertTo}
+                availableCurrencies={Object.keys(availableCurrencies)}
                 subText={`Balance: ${
                   availableCurrencies[convertTo].symbol
                 }${userReducer.money[convertTo] || 0.0}`}
+                currencyAmount={currencyToAmount}
+                handleCurrencyChange={currencyToAmount => {
+                  const newCurrentCurrencyAmount = this.calculateTransaction(
+                    parseInt(currencyToAmount, 8),
+                    currentCurrencyData.result[currentCurrency]
+                  );
+                  this.setState({
+                    currencyFromAmount: newCurrentCurrencyAmount,
+                    currencyToAmount
+                  });
+                }}
+                handleCurrencyTypeChange={currency => {
+                  this.setState({ convertTo: currency });
+                }}
               />
               <div className="Exchange__button">
                 <input type="button" value="Exchange" />

@@ -11,12 +11,30 @@ const downIcon = {
   stroke: "black"
 };
 
-const ExchangeCurrency = ({ header, subText, color = "white" }) => {
+const ExchangeCurrency = ({
+  currentCurrency,
+  subText,
+  color = "white",
+  currencyAmount = 0,
+  handleCurrencyChange,
+  handleCurrencyTypeChange,
+  availableCurrencies
+}) => {
   return (
     <div className={`ExchangeCurrency ExchangeCurrency--${color}`}>
       <div className="ExchangeCurrency__data">
         <div className="ExchangeCurrency__header">
-          <h2 className="ExchangeCurrency__header--text">{header}</h2>
+          <select
+            className="ExchangeCurrency__header--text"
+            value={currentCurrency}
+            onChange={handleCurrencyTypeChange}
+          >
+            {availableCurrencies.map(availableCurrency => (
+              <option key={availableCurrency} value={availableCurrency}>
+                {availableCurrency}
+              </option>
+            ))}
+          </select>
           <Icon className="ExchangeCurrency__header--icon" {...downIcon} />
         </div>
         <div className="ExchangeCurrency__sub_text">{subText}</div>
@@ -25,6 +43,8 @@ const ExchangeCurrency = ({ header, subText, color = "white" }) => {
         className="ExchangeCurrency__input"
         type="number"
         placeholder="0"
+        value={currencyAmount}
+        onChange={e => handleCurrencyChange(e.target.value)}
       />
     </div>
   );
