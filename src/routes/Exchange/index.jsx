@@ -11,6 +11,8 @@ import { ReactComponent as Switch } from "../../assets/icons/shuffle.svg";
 
 import { fetchCurrencyData } from "../../redux/actions/index";
 
+import { calculateTransaction } from "../../helpers";
+
 import "./styles.scss";
 
 const closeIcon = {
@@ -88,11 +90,6 @@ class Exchange extends Component {
     this.setState({ currentCurrency: convertTo, convertTo: convertFrom });
   };
 
-  calculateTransaction = (convertValue, convertRate, divide) => {
-    if (divide) return convertValue / convertRate;
-    return convertValue * convertRate;
-  };
-
   render() {
     const { currencyData } = this.props;
     const {
@@ -133,7 +130,7 @@ class Exchange extends Component {
               }${userReducer.money[convertFrom] || 0.0}`}
               currencyAmount={currencyFromAmount}
               handleCurrencyChange={currencyFromAmount => {
-                const newCurrencyToAmount = this.calculateTransaction(
+                const newCurrencyToAmount = calculateTransaction(
                   parseFloat(currencyFromAmount),
                   currentRate,
                   false
@@ -173,7 +170,7 @@ class Exchange extends Component {
                 }${userReducer.money[convertTo] || 0.0}`}
                 currencyAmount={currencyToAmount}
                 handleCurrencyChange={currencyToAmount => {
-                  const newCurrentCurrencyAmount = this.calculateTransaction(
+                  const newCurrentCurrencyAmount = calculateTransaction(
                     parseFloat(currencyToAmount),
                     currentCurrencyData.result[convertTo],
                     true
