@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "height": "2rem",
+      "width": "2rem",
+    }
+  }
+>
+  <div
+    className="Icon"
+  >
+    <svg
+      stroke="black"
+    >
+      x.svg
+    </svg>
+  </div>
+</div>
+`;

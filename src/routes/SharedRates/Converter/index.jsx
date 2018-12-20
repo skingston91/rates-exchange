@@ -2,7 +2,6 @@ import React from "react";
 
 import IconGroup from "../../../components/IconGroup";
 import SubItem from "../../../components/SubItem";
-import LazyLoadedImage from "../../../components/LazyLoadedImage";
 
 import { ReactComponent as Plus } from "../../../assets/icons/plus-circle.svg";
 import GBflag from "../../../assets/flags/4x3/gb.svg";
@@ -28,9 +27,10 @@ const Converter = () => {
       />
       <div className="Converter__Set">
         <div className="Converter__flag">
-          <LazyLoadedImage
+          <img
             src={GBflag}
             style={{ borderRadius: "50%", width: "3rem" }}
+            alt='GBflag'
           />
         </div>
         <SubItem headerText="GBP" subHeaderText="British Pound" />

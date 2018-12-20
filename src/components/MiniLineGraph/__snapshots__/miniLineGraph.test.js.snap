@@ -1,0 +1,233 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MiniLineGraph renders correctly 1`] = `
+<div
+  className="MiniLineGraph"
+>
+  <svg
+    height={50}
+    preserveAspectRatio="none"
+    viewBox="0 0 240 60"
+    width={50}
+  >
+    <g>
+      <circle
+        cx={2}
+        cy={58}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        r={2}
+        style={
+          Object {
+            "fill": "blue",
+            "fillOpacity": ".1",
+            "pointerEvents": "auto",
+            "stroke": "none",
+            "strokeWidth": "0",
+          }
+        }
+      />
+      <circle
+        cx={23.454545454545453}
+        cy={39.333333333333336}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        r={2}
+        style={
+          Object {
+            "fill": "blue",
+            "fillOpacity": ".1",
+            "pointerEvents": "auto",
+            "stroke": "none",
+            "strokeWidth": "0",
+          }
+        }
+      />
+      <circle
+        cx={44.90909090909091}
+        cy={58}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        r={2}
+        style={
+          Object {
+            "fill": "blue",
+            "fillOpacity": ".1",
+            "pointerEvents": "auto",
+            "stroke": "none",
+            "strokeWidth": "0",
+          }
+        }
+      />
+      <circle
+        cx={66.36363636363636}
+        cy={2}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        r={2}
+        style={
+          Object {
+            "fill": "blue",
+            "fillOpacity": ".1",
+            "pointerEvents": "auto",
+            "stroke": "none",
+            "strokeWidth": "0",
+          }
+        }
+      />
+      <circle
+        cx={87.81818181818181}
+        cy={46.8}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        r={2}
+        style={
+          Object {
+            "fill": "blue",
+            "fillOpacity": ".1",
+            "pointerEvents": "auto",
+            "stroke": "none",
+            "strokeWidth": "0",
+          }
+        }
+      />
+      <circle
+        cx={109.27272727272727}
+        cy={20.666666666666668}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        r={2}
+        style={
+          Object {
+            "fill": "blue",
+            "fillOpacity": ".1",
+            "pointerEvents": "auto",
+            "stroke": "none",
+            "strokeWidth": "0",
+          }
+        }
+      />
+      <circle
+        cx={130.72727272727272}
+        cy={58}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        r={2}
+        style={
+          Object {
+            "fill": "blue",
+            "fillOpacity": ".1",
+            "pointerEvents": "auto",
+            "stroke": "none",
+            "strokeWidth": "0",
+          }
+        }
+      />
+      <circle
+        cx={152.1818181818182}
+        cy={39.333333333333336}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        r={2}
+        style={
+          Object {
+            "fill": "blue",
+            "fillOpacity": ".1",
+            "pointerEvents": "auto",
+            "stroke": "none",
+            "strokeWidth": "0",
+          }
+        }
+      />
+      <circle
+        cx={173.63636363636363}
+        cy={58}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        r={2}
+        style={
+          Object {
+            "fill": "blue",
+            "fillOpacity": ".1",
+            "pointerEvents": "auto",
+            "stroke": "none",
+            "strokeWidth": "0",
+          }
+        }
+      />
+      <circle
+        cx={195.09090909090907}
+        cy={2}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        r={2}
+        style={
+          Object {
+            "fill": "blue",
+            "fillOpacity": ".1",
+            "pointerEvents": "auto",
+            "stroke": "none",
+            "strokeWidth": "0",
+          }
+        }
+      />
+      <circle
+        cx={216.54545454545453}
+        cy={46.8}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        r={2}
+        style={
+          Object {
+            "fill": "blue",
+            "fillOpacity": ".1",
+            "pointerEvents": "auto",
+            "stroke": "none",
+            "strokeWidth": "0",
+          }
+        }
+      />
+      <circle
+        cx={238}
+        cy={20.666666666666668}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        r={2}
+        style={
+          Object {
+            "fill": "blue",
+            "fillOpacity": ".1",
+            "pointerEvents": "auto",
+            "stroke": "none",
+            "strokeWidth": "0",
+          }
+        }
+      />
+      <polyline
+        points="2 58 23.454545454545453 39.333333333333336 44.90909090909091 58 66.36363636363636 2 87.81818181818181 46.8 109.27272727272727 20.666666666666668 130.72727272727272 58 152.1818181818182 39.333333333333336 173.63636363636363 58 195.09090909090907 2 216.54545454545453 46.8 238 20.666666666666668 238 58 2 58 2 58"
+        style={
+          Object {
+            "fill": "blue",
+            "fillOpacity": ".1",
+            "pointerEvents": "auto",
+            "stroke": "none",
+            "strokeWidth": "0",
+          }
+        }
+      />
+      <polyline
+        points="2 58 23.454545454545453 39.333333333333336 44.90909090909091 58 66.36363636363636 2 87.81818181818181 46.8 109.27272727272727 20.666666666666668 130.72727272727272 58 152.1818181818182 39.333333333333336 173.63636363636363 58 195.09090909090907 2 216.54545454545453 46.8 238 20.666666666666668"
+        style={
+          Object {
+            "fill": "none",
+            "stroke": "blue",
+            "strokeLinecap": "round",
+            "strokeLinejoin": "round",
+            "strokeWidth": "1",
+          }
+        }
+      />
+    </g>
+  </svg>
+</div>
+`;
