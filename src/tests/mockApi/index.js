@@ -1,7 +1,9 @@
-export function fetchCurrencyData() {
-  return Promise.resolve(currencyData);
-}
-
 export const currencyData = {
-  data: {}
+  result: {
+    base: "USD",
+    rates: {
+      GBP: 1.501231
+    },
+    timestamp: 1545325200
+  }
 };
