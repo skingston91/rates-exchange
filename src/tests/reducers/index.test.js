@@ -1,8 +1,8 @@
-import currencyReducer from "../../redux/reducers/reducer_currency";
+import currencyReducer from "../../state/reducers/reducer_currency";
 import {
   FETCH_CURRENCY_DONE,
   FETCH_CURRENCY_FAILED
-} from "../../redux/actions/types";
+} from "../../state/actions/types";
 const INITIAL_STATE = {};
 
 describe("Currency Reducer", () => {

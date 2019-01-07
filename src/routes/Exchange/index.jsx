@@ -9,7 +9,7 @@ import { ReactComponent as Close } from "../../assets/icons/x.svg";
 import { ReactComponent as TrendingUp } from "../../assets/icons/trending-up.svg";
 import { ReactComponent as Switch } from "../../assets/icons/shuffle.svg";
 
-import { fetchCurrencyData } from "../../redux/actions/index";
+import { fetchCurrencyData } from "../../state/actions/index";
 
 import { calculateTransaction } from "../../helpers";
 

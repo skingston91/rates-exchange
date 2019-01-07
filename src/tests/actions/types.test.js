@@ -1,7 +1,7 @@
 import {
   FETCH_CURRENCY_DONE,
   FETCH_CURRENCY_FAILED
-} from "../../redux/actions/types";
+} from "../../state/actions/types";
 
 describe("action types", () => {
   describe("Fetch Currency types", () => {

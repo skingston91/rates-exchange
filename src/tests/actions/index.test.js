@@ -1,12 +1,13 @@
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 
-import { fetchCurrencyData } from "../../redux/actions";
-import { FETCH_CURRENCY_DONE } from "../../redux/actions/types";
+import { fetchCurrencyData } from "../../state/actions";
+import { FETCH_CURRENCY_DONE } from "../../state/actions/types";
 
 import { currencyData } from "../mockApi";
+import * as api from "../../api";
 
-const middlewares = [thunk];
+const middlewares = [thunk.withExtraArgument(api)];
 const mockStore = configureStore(middlewares);
 
 describe("actions index test fetchCurrencyData", () => {

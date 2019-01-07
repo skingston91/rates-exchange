@@ -7,11 +7,14 @@ import thunk from "redux-thunk";
 import SharedRates from "./routes/SharedRates";
 import Exchange from "./routes/Exchange";
 
-import reducers from "./redux/reducers";
+import reducers from "./state/reducers";
+import * as api from "./api";
 
 import "./App.scss";
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const createStoreWithMiddleware = applyMiddleware(thunk.withExtraArgument(api))(
+  createStore
+);
 
 class App extends Component {
   render() {
