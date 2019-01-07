@@ -29,7 +29,7 @@ const ExchangeCurrency = ({
           <select
             className="ExchangeCurrency__header--text"
             value={currentCurrency}
-            onChange={handleCurrencyTypeChange}
+            onChange={e => handleCurrencyTypeChange(e.target.value)}
           >
             {availableCurrencies.map(availableCurrency => (
               <option key={availableCurrency} value={availableCurrency}>

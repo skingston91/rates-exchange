@@ -71,6 +71,7 @@ class Exchange extends Component {
       currencyToAmount: 0
     };
   }
+
   componentDidMount() {
     // commented out as hitting data limit
     // this.interval = setInterval(
@@ -143,6 +144,7 @@ class Exchange extends Component {
               }}
               handleCurrencyTypeChange={currency => {
                 this.setState({ convertFrom: currency });
+                this.props.fetchCurrencyData(currency);
               }}
               prefix="-"
             />
