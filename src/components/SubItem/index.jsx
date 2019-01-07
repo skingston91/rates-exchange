@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import "./styles.scss";
 
@@ -8,5 +9,10 @@ const SubItem = ({ headerText, subHeaderText }) => (
     <h5 className="SubItem__subHeader">{subHeaderText}</h5>
   </div>
 );
+
+SubItem.propTypes = {
+  headerText: PropTypes.string.isRequired,
+  subHeaderText: PropTypes.string.isRequired
+};
 
 export default SubItem;

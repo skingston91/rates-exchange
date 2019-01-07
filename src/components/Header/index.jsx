@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import Icon from "../Icon";
 
@@ -26,5 +27,13 @@ const Header = ({
     <h1 className="Header__text"> {headerText} </h1>
   </div>
 );
+
+Header.propTypes = {
+  headerText: PropTypes.string.isRequired,
+  leftIconProps: PropTypes.object,
+  rightIconProps: PropTypes.object,
+  leftLink: PropTypes.string,
+  rightLink: PropTypes.string
+};
 
 export default Header;

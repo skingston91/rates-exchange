@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Icon from "../../components/Icon";
 
@@ -21,7 +22,6 @@ const ExchangeCurrency = ({
   availableCurrencies,
   prefix
 }) => {
-  const currentValue = parseFloat(currencyAmount) || 0;
   return (
     <div className={`ExchangeCurrency ExchangeCurrency--${color}`}>
       <div className="ExchangeCurrency__data">
@@ -42,18 +42,29 @@ const ExchangeCurrency = ({
         <div className="ExchangeCurrency__sub_text">{subText}</div>
       </div>
       <div>
-        {currentValue !== 0 && (
+        {currencyAmount !== 0 && (
           <span className="ExchangeCurrency__input--prefix"> {prefix} </span>
         )}
         <input
           className="ExchangeCurrency__input"
           type="number"
-          value={currentValue}
+          value={currencyAmount}
           onChange={e => handleCurrencyChange(e.target.value)}
         />
       </div>
     </div>
   );
+};
+
+ExchangeCurrency.propTypes = {
+  currentCurrency: PropTypes.string.isRequired,
+  subText: PropTypes.string,
+  color: PropTypes.string,
+  currencyAmount: PropTypes.number,
+  handleCurrencyChange: PropTypes.func.isRequired,
+  handleCurrencyTypeChange: PropTypes.func.isRequired,
+  availableCurrencies: PropTypes.array.isRequired,
+  prefix: PropTypes.string.isRequired
 };
 
 export default ExchangeCurrency;

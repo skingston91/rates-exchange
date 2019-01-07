@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Icon from "../Icon";
 
@@ -19,5 +20,12 @@ const IconGroup = ({ handleClick, icon, text, color = "black" }) => (
     </div>
   </div>
 );
+
+Icon.propTypes = {
+  icon: PropTypes.object,
+  handleClick: PropTypes.func,
+  text: PropTypes.string,
+  color: PropTypes.string
+};
 
 export default IconGroup;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import "./styles.scss";
 
@@ -11,6 +12,12 @@ const Icon = props => {
       </div>
     </div>
   );
+};
+
+Icon.propTypes = {
+  SvgComponent: PropTypes.element.isRequired,
+  height: PropTypes.string,
+  width: PropTypes.string
 };
 
 export default Icon;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import NavTab from "./NavTab";
 
@@ -11,5 +12,9 @@ const NavBar = ({ navElements }) => (
     ))}
   </div>
 );
+
+NavBar.propTypes = {
+  navElements: PropTypes.array.isRequired
+};
 
 export default NavBar;

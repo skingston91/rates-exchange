@@ -111,6 +111,7 @@ class Exchange extends Component {
     }
 
     const currentRate = currentCurrencyData.result[convertTo];
+    console.log(typeof currencyFromAmount, typeof currencyToAmount);
     return (
       <div className="Exchange">
         <Header
@@ -128,7 +129,7 @@ class Exchange extends Component {
               subText={`Balance: ${
                 availableCurrencies[convertFrom].symbol
               }${userReducer.money[convertFrom] || 0.0}`}
-              currencyAmount={currencyFromAmount}
+              currencyAmount={parseFloat(currencyToAmount) || 0}
               handleCurrencyChange={currencyFromAmount => {
                 const newCurrencyToAmount = calculateTransaction(
                   parseFloat(currencyFromAmount),
@@ -168,7 +169,7 @@ class Exchange extends Component {
                 subText={`Balance: ${
                   availableCurrencies[convertTo].symbol
                 }${userReducer.money[convertTo] || 0.0}`}
-                currencyAmount={currencyToAmount}
+                currencyAmount={parseFloat(currencyFromAmount) || 0}
                 handleCurrencyChange={currencyToAmount => {
                   const newCurrentCurrencyAmount = calculateTransaction(
                     parseFloat(currencyToAmount),
