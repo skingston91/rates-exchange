@@ -1,3 +1,5 @@
+@import "~modern-normalize/modern-normalize.css";
+
 body {
   margin: 0;
   padding: 0;
@@ -13,11 +15,13 @@ code {
     monospace;
 }
 
-input {
+input,
+select {
   background-color: transparent;
   border: none;
   -webkit-appearance: none;
 }
+
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;

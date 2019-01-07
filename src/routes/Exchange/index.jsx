@@ -111,7 +111,7 @@ class Exchange extends Component {
     }
 
     const currentRate = currentCurrencyData.result[convertTo];
-    console.log(typeof currencyFromAmount, typeof currencyToAmount);
+
     return (
       <div className="Exchange">
         <Header

@@ -1,4 +1,2 @@
 fix error handling on failed api requests to dispatch the error event 
 Fix leading zero issue
-Add proper reset and fixes 
-Fix styling at different widths 

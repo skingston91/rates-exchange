@@ -1,7 +1,7 @@
 .ExchangeCurrency {
   display: flex;
   justify-content: space-around;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
 }
 
 .ExchangeCurrency--grey {
@@ -16,12 +16,12 @@
 .ExchangeCurrency__header {
   display: flex;
   align-items: center;
+  padding: 0 0.2rem 1rem 0;
 }
 
 .ExchangeCurrency__header--text {
   font-size: 1.8rem;
   margin: 0;
-  padding: 0 0.2rem 1rem 0;
 }
 
 .ExchangeCurrency__input {
