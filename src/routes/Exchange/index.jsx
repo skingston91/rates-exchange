@@ -108,7 +108,7 @@ class Exchange extends Component {
       (currentCurrencyData && currentCurrencyData.error) ||
       (!currentCurrencyData.result || !currentCurrencyData.result[convertTo])
     ) {
-      return <p>Error!</p>;
+      return <p>{currentCurrencyData.error}!</p>;
     }
 
     const currentRate = currentCurrencyData.result[convertTo];
