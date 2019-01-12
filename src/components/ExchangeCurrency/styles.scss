@@ -16,6 +16,7 @@
 .ExchangeCurrency__header {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 0 0.2rem 1rem 0;
 }
 
@@ -31,6 +32,7 @@
   border: none;
   font-size: 1.2rem;
   color: grey;
+  padding-left: 1rem;
 }
 
 .ExchangeCurrency__sub_text {
@@ -38,4 +40,5 @@
 }
 
 .ExchangeCurrency__input--prefix {
+  position: absolute;
 }
