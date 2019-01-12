@@ -73,7 +73,7 @@ class Exchange extends Component {
   }
 
   componentDidMount() {
-    // commented out as hitting data limit
+    // TODO commented out as hitting api data limit
     // this.interval = setInterval(
     //   () => this.props.fetchCurrencyData(this.state.currentCurrency),
     //   10000
@@ -85,10 +85,11 @@ class Exchange extends Component {
     clearInterval(this.interval);
   }
 
-  // Can't test with this api
   handleSwitch = () => {
     const { convertFrom, convertTo } = this.state;
-    this.setState({ currentCurrency: convertTo, convertTo: convertFrom });
+    this.setState({ convertFrom: convertTo, convertTo: convertFrom });
+    // TODO we should just invert the data in this instance rather than making a new request
+    this.props.fetchCurrencyData(convertTo);
   };
 
   render() {
@@ -99,6 +100,7 @@ class Exchange extends Component {
       currencyFromAmount,
       currencyToAmount
     } = this.state;
+
     const currentCurrencyData = currencyData[convertFrom];
     if (!currentCurrencyData) {
       return <p>Loading...</p>;
@@ -130,15 +132,15 @@ class Exchange extends Component {
               subText={`Balance: ${
                 availableCurrencies[convertFrom].symbol
               }${userReducer.money[convertFrom] || 0.0}`}
-              currencyAmount={parseFloat(currencyToAmount) || 0}
-              handleCurrencyChange={currencyFromAmount => {
+              currencyAmount={currencyFromAmount}
+              handleCurrencyChange={newCurrencyFromAmount => {
                 const newCurrencyToAmount = calculateTransaction(
-                  parseFloat(currencyFromAmount),
+                  newCurrencyFromAmount,
                   currentRate,
                   false
                 );
                 this.setState({
-                  currencyFromAmount,
+                  currencyFromAmount: newCurrencyFromAmount,
                   currencyToAmount: newCurrencyToAmount
                 });
               }}
@@ -148,6 +150,7 @@ class Exchange extends Component {
               }}
               prefix="-"
             />
+
             <div className="Exchange__center">
               <button
                 className="Exchange__switch"
@@ -164,6 +167,7 @@ class Exchange extends Component {
                 }${Number.parseFloat(currentRate).toFixed(4)}`}</h4>
               </div>
             </div>
+
             <div className="Exchange__bottom">
               <ExchangeCurrency
                 currentCurrency={convertTo}
@@ -171,16 +175,16 @@ class Exchange extends Component {
                 subText={`Balance: ${
                   availableCurrencies[convertTo].symbol
                 }${userReducer.money[convertTo] || 0.0}`}
-                currencyAmount={parseFloat(currencyFromAmount) || 0}
-                handleCurrencyChange={currencyToAmount => {
+                currencyAmount={currencyToAmount}
+                handleCurrencyChange={newCurrencyToAmount => {
                   const newCurrentCurrencyAmount = calculateTransaction(
-                    parseFloat(currencyToAmount),
+                    newCurrencyToAmount,
                     currentCurrencyData.result[convertTo],
                     true
                   );
                   this.setState({
                     currencyFromAmount: newCurrentCurrencyAmount,
-                    currencyToAmount
+                    currencyToAmount: newCurrencyToAmount
                   });
                 }}
                 handleCurrencyTypeChange={currency => {

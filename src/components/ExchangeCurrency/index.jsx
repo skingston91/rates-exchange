@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Icon from "../../components/Icon";
+import { roundNumberTo2Dp } from "../../helpers";
 
 import { ReactComponent as Down } from "../../assets/icons/chevron-down.svg";
 
@@ -16,12 +17,14 @@ const ExchangeCurrency = ({
   currentCurrency,
   subText,
   color = "white",
-  currencyAmount = 0,
+  currencyAmount,
   handleCurrencyChange,
   handleCurrencyTypeChange,
   availableCurrencies,
   prefix
 }) => {
+  // TODO deal with NAN warning but still allow placeholder
+  // const validatedCurrencyAmount = Number.isNaN(currencyAmount) ? 0 : currencyAmount;
   return (
     <div className={`ExchangeCurrency ExchangeCurrency--${color}`}>
       <div className="ExchangeCurrency__data">
@@ -48,8 +51,9 @@ const ExchangeCurrency = ({
         <input
           className="ExchangeCurrency__input"
           type="number"
-          value={currencyAmount}
-          onChange={e => handleCurrencyChange(e.target.value)}
+          placeholder={0}
+          value={roundNumberTo2Dp(currencyAmount)}
+          onChange={e => handleCurrencyChange(parseFloat(e.target.value))}
         />
       </div>
     </div>
