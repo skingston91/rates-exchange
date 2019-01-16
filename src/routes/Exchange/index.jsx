@@ -73,9 +73,9 @@ class Exchange extends Component {
   }
 
   componentDidMount() {
-    // TODO commented out as hitting api data limit
+    // TODO uncomment out when handing so I don't hit the api data limit
     // this.interval = setInterval(
-    //   () => this.props.fetchCurrencyData(this.state.currentCurrency),
+    //   () => this.props.fetchCurrencyData(this.state.convertFrom),
     //   10000
     // );
     this.props.fetchCurrencyData(this.state.convertFrom);
@@ -88,7 +88,8 @@ class Exchange extends Component {
   handleSwitch = () => {
     const { convertFrom, convertTo } = this.state;
     this.setState({ convertFrom: convertTo, convertTo: convertFrom });
-    // TODO we should just invert the data in this instance rather than making a new request
+    // TODO we could just invert the data in this instance rather than making a new request 
+    // (and that would save us a extra request although that would happen in the next 10 seconds anyway)
     this.props.fetchCurrencyData(convertTo);
   };
 

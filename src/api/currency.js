@@ -1,4 +1,3 @@
-// TODO move the api request to a node server to hide our apikey
 import apiKey from "../data/apiKey";
 
 export function fetchCurrency(currency) {
