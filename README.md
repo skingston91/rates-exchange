@@ -1,4 +1,4 @@
-Recreates the Exchange Rates page of the Revolut mobile application as single page React app with Redux
+Recreates an Exchange Rates page as single page React app with Redux
 
 Uses Create-React-App to save time doing boilerplate
 
