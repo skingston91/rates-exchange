@@ -15,10 +15,10 @@ Run yarn install to set up all the dependencies
 
 ### How to run
 *Yarn Start* <br>
-Running yarn start after yarn install will runs the app in the development mode.<br>
+Running yarn start after yarn install will run the app in the development mode.<br>
 The page should then open in the browser automatically, if not open [http://localhost:3000](http://localhost:3000) to view it in the browser. 
 
-### `yarn test`
+*yarn test* <br>
 Launches the Jest test runner in the interactive watch mode.<br>
 
 ### Tech Choices
