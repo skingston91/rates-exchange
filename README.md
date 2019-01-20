@@ -1,5 +1,5 @@
 ## Task
-Recreation of the Rates/Exchange page from scratch as single page React app with Redux, including exchange rates refresh every 10 seconds to get the latest rates for GBP, EUR and USD.
+Recreation of the Rates/Exchange page from scratch as single page React app with Redux, with the only requirement to have the exchange rates refresh every 10 seconds to get the latest rates for GBP, EUR and USD.
 
 <br>
 *Notes*
