@@ -37,6 +37,14 @@ const switchBlueIcon = {
   stroke: "#0167fd"
 };
 
+// The requests only work as USD on the free account for this api
+// Otherwise this wouldn't need to exist
+const availableBaseCurrencies = {
+  USD: {
+    symbol: "$"
+  }
+};
+
 const availableCurrencies = {
   GBP: {
     symbol: "£"
@@ -60,7 +68,6 @@ const userReducer = {
 };
 
 // defaultCurrentCurrency, currentBalance would normally come from a users reducer
-// The requests only work as USD on the free account
 class Exchange extends Component {
   constructor() {
     super();
@@ -73,7 +80,8 @@ class Exchange extends Component {
   }
 
   componentDidMount() {
-    // TODO uncomment out when handing so I don't hit the api data limit
+    // TODO un-comment out when using as an application so else you will hit the api data limit
+    // The requests only work as USD on the free account for this api
     // this.interval = setInterval(
     //   () => this.props.fetchCurrencyData(this.state.convertFrom),
     //   10000
@@ -88,7 +96,7 @@ class Exchange extends Component {
   handleSwitch = () => {
     const { convertFrom, convertTo } = this.state;
     this.setState({ convertFrom: convertTo, convertTo: convertFrom });
-    // TODO we could just invert the data in this instance rather than making a new request 
+    // TODO we could just invert the data in this instance rather than making a new request
     // (and that would save us a extra request although that would happen in the next 10 seconds anyway)
     this.props.fetchCurrencyData(convertTo);
   };
@@ -129,7 +137,7 @@ class Exchange extends Component {
           <React.Fragment>
             <ExchangeCurrency
               currentCurrency={convertFrom}
-              availableCurrencies={Object.keys(availableCurrencies)}
+              availableCurrencies={Object.keys(availableBaseCurrencies)}
               subText={`Balance: ${
                 availableCurrencies[convertFrom].symbol
               }${userReducer.money[convertFrom] || 0.0}`}
