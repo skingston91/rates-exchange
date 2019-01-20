@@ -33,6 +33,8 @@ The api's listed by the task only support USD to other currencies, so currently 
 
 The Switch functionality doesn't work without extra api calls, which as you are changing the base currency will break the application as it will get rejected request from the api. The 'easy' solution of switching the currency and calculating the inverse of the currency doesn't work as the currencyData from redux is currenctly the single of source of truth. This should be refactored and be stored earlier on so we can calculate currency rates in reverse and have them stored in redux ready for usage by the exchange components, although this still wouldn't solve the issue of the user trying to compare GBR and EUR and in the current state would break as the api doesn't return that data.
 
+Calculate Transaction hasn't been built yet as it wasn't listed as a requirement 
+
  ### Next Steps
 
  - Added Typescript
@@ -40,6 +42,7 @@ The Switch functionality doesn't work without extra api calls, which as you are 
  - Better styling for the - and + elements
  - Switch button to not require another api request if the data is already stored else under the 'from currency'
  - Remove public api key from codebase 
+ - Add Calculate Transaction functionality
 
 
 
