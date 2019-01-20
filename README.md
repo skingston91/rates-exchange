@@ -1,10 +1,19 @@
 ## Task
-Recreation of the Rates/Exchange page from scratch as single page React app with Redux
+Recreation of the Rates/Exchange page from scratch as single page React app with Redux, including exchange rates refresh every 10 seconds to get the latest rates for GBP, EUR and USD.
 
-The extra rates page was added in error due to misreading what page I needed to implement so I've left in the basic shell of the page along with the React-Router components before I switched to the correct page I needed to build, but it shows more of an idea of how the application could be structured if it was a larger app.
+*Notes*
+The extra rates page was added in error due to misreading what page I needed to implement so I've left in the basic shell of the page along with the React-Router components before I switched to the correct page I needed to build, but it shows more of an idea of how the application could be structured if it was a larger app. So only the main page is meant to be functional.
 
 *Limitations*
 The api's listed by the task only support USD to other currencies, so currently any changes from the base currency of USD will break the system as the api will reject the request as it asks for a paid for license. If we had a paid license for a rates api, the code should all work as expected. To meet the requirements of the api license, I've limited the user to only be able to do transactions from USD to another. 
+
+I've left the rates refresh for the current selected currency commented out as it has a free api limit of 1000 which could create issues if left running. To get this to work uncomment out the following lines in ComponentDidMount in the src/routes/Exchange/index. 
+```
+// this.interval = setInterval(
+    //   () => this.props.fetchCurrencyData(this.state.convertFrom),
+    //   10000
+    // );
+```
 
 ### Installation Process
 *Yarn Install*<br>
