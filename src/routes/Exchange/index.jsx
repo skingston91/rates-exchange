@@ -80,13 +80,12 @@ class Exchange extends Component {
   }
 
   componentDidMount() {
-    // TODO un-comment out when using as an application so else you will hit the api data limit
     // The requests only work as USD on the free account for this api
-    // this.interval = setInterval(
-    //   () => this.props.fetchCurrencyData(this.state.convertFrom),
-    //   10000
-    // );
     this.props.fetchCurrencyData(this.state.convertFrom);
+    this.interval = setInterval(
+      () => this.props.fetchCurrencyData(this.state.convertFrom),
+      10000
+    );
   }
 
   componentWillUnmount() {
@@ -96,8 +95,6 @@ class Exchange extends Component {
   handleSwitch = () => {
     const { convertFrom, convertTo } = this.state;
     this.setState({ convertFrom: convertTo, convertTo: convertFrom });
-    // TODO we could just invert the data in this instance rather than making a new request
-    // (and that would save us a extra request although that would happen in the next 10 seconds anyway)
     this.props.fetchCurrencyData(convertTo);
   };
 
